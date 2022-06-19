@@ -13,8 +13,18 @@ namespace WebAddressBookTests
     public class ContactHelper : HelperBase
     {
 
-        public ContactHelper(ApplicationManager manager): base(manager)
+        public ContactHelper(ApplicationManager manager) : base(manager)
         {
+        }
+
+        public ContactData Create(ContactData contact)
+        {
+            InitContactCreation();
+            FillInContactForm(contact);
+            SubmitContactCreation();
+            ReturnToHomePage();
+
+            return contact;
         }
 
         public ContactHelper InitContactCreation()
