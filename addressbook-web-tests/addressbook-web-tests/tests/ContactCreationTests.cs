@@ -19,8 +19,6 @@ namespace WebAddressBookTests
             app.Auth.Logout();
 
         }
-
-        //.FillInContactForm(new ContactData("liza", "polovaya"))
     }
 }
 

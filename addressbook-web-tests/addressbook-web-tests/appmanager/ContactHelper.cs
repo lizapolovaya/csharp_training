@@ -17,14 +17,54 @@ namespace WebAddressBookTests
         {
         }
 
-        public ContactData Create(ContactData contact)
+        public ContactHelper Remove(int v)
+        {
+            SelectContact(v);
+            DeleteContact();
+            return this;
+        }
+
+        public ContactHelper Modify(ContactData newContact)
+        {
+            EditContact();
+            FillInContactForm(newContact);
+            SubmitContactModification();
+            return this;
+        }
+
+        public ContactHelper SubmitContactModification()
+        {
+            driver.FindElement(By.Name("update")).Click();
+            return this;
+        }
+
+        public ContactHelper EditContact()
+        {
+            driver.FindElement(By.CssSelector("img[alt=\"Edit\"]")).Click();
+            return this;
+        }
+
+        public ContactHelper DeleteContact()
+        {
+            driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
+            driver.SwitchTo().Alert().Accept();
+            return this;
+        }
+
+        public ContactHelper SelectContact(int v)
+        {
+            driver.FindElement(By.Id(v.ToString())).Click();
+            return this;
+        }
+
+        public ContactHelper Create(ContactData contact)
         {
             InitContactCreation();
             FillInContactForm(contact);
             SubmitContactCreation();
             ReturnToHomePage();
 
-            return contact;
+            return this;
         }
 
         public ContactHelper InitContactCreation()
