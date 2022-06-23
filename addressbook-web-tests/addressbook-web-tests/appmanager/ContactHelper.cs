@@ -17,9 +17,9 @@ namespace WebAddressBookTests
         {
         }
 
-        public ContactHelper Remove(int v)
+        public ContactHelper Remove()
         {
-            SelectContact(v);
+            SelectContact();
             DeleteContact();
             return this;
         }
@@ -51,9 +51,10 @@ namespace WebAddressBookTests
             return this;
         }
 
-        public ContactHelper SelectContact(int v)
+        public ContactHelper SelectContact()
         {
-            driver.FindElement(By.Id(v.ToString())).Click();
+            driver.FindElement(By.Name("selected[]")).Click();
+            //driver.FindElement(By.Id(v.ToString())).Click();
             return this;
         }
 
@@ -75,12 +76,9 @@ namespace WebAddressBookTests
 
         public ContactHelper FillInContactForm(ContactData contact)
         {
-            driver.FindElement(By.Name("firstname")).Click();
-            driver.FindElement(By.Name("firstname")).Clear();
-            driver.FindElement(By.Name("firstname")).SendKeys(contact.FirstName);
-            driver.FindElement(By.Name("lastname")).Click();
-            driver.FindElement(By.Name("lastname")).Clear();
-            driver.FindElement(By.Name("lastname")).SendKeys(contact.LastName);
+            Type(By.Name("firstname"), contact.FirstName);
+            Type(By.Name("lastname"), contact.LastName);
+
             return this;
         }
 

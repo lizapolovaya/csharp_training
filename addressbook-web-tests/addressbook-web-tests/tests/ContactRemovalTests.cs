@@ -9,12 +9,12 @@ using NUnit.Framework;
 namespace WebAddressBookTests
 {
     [TestFixture]
-    public class ContactRemovalTests : TestBase
+    public class ContactRemovalTests : AuthTestBase
     {
         [Test]
         public void GontactRemovalTest()
         {
-            app.Contacts.Remove(5);
+            app.Contacts.Remove();
 
             app.Auth.Logout();
         }
