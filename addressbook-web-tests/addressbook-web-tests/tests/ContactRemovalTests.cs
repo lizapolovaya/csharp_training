@@ -12,7 +12,7 @@ namespace WebAddressBookTests
     public class ContactRemovalTests : AuthTestBase
     {
         [Test]
-        public void GontactRemovalTest()
+        public void ContactRemovalTest()
         {
             app.Contacts.Remove();
 

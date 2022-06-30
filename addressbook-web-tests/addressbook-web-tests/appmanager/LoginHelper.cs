@@ -31,6 +31,7 @@ namespace WebAddressBookTests
             Type(By.Name("user"), account.Username);
             Type(By.Name("pass"), account.Password);
             driver.FindElement(By.XPath("//input[@value='Login']")).Click();
+            manager.Navigation.OpenHomePage();
         }
 
 
@@ -39,6 +40,9 @@ namespace WebAddressBookTests
             if (IsLoggedIn())
             {
                 driver.FindElement(By.LinkText("Logout")).Click();
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
+                driver.FindElement(By.Name("user"));
+
             }
         }
       
