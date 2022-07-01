@@ -30,8 +30,8 @@ namespace WebAddressBookTests
         public GroupHelper Modify(int v, GroupData newData)
         {
             if (HasGroup())
-            {
-                return this;
+            {         
+                
             }
             else 
             {
@@ -62,7 +62,7 @@ namespace WebAddressBookTests
 
             if (HasGroup())
             {
-                return this;
+ 
             }
             else
             {

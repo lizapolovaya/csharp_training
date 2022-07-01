@@ -21,7 +21,7 @@ namespace WebAddressBookTests
         {
             if (HasContact())
             {
-                return this;
+
             }
             else
             { 
@@ -37,7 +37,7 @@ namespace WebAddressBookTests
         {
             if (HasContact())
             {
-                return this;
+ 
             }
             else
             {
