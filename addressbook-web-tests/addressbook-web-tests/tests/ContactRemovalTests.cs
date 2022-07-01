@@ -14,7 +14,9 @@ namespace WebAddressBookTests
         [Test]
         public void ContactRemovalTest()
         {
-            app.Contacts.Remove();
+            ContactData contact = new ContactData("liza", "polovaya");
+
+            app.Contacts.Remove(contact);
 
             app.Auth.Logout();
         }

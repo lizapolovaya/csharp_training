@@ -17,8 +17,17 @@ namespace WebAddressBookTests
         {
         }
 
-        public ContactHelper Remove()
+        public ContactHelper Remove(ContactData contact)
         {
+            if (HasContact())
+            {
+                return this;
+            }
+            else
+            { 
+                Create(contact); 
+            }
+
             SelectContact();
             DeleteContact();
             return this;
@@ -26,10 +35,25 @@ namespace WebAddressBookTests
 
         public ContactHelper Modify(ContactData newContact)
         {
+            if (HasContact())
+            {
+                return this;
+            }
+            else
+            {
+                ContactData contact = new ContactData("liza", "polovaya");
+                Create(contact);
+            }
+
             EditContact();
             FillInContactForm(newContact);
             SubmitContactModification();
             return this;
+        }
+
+        public bool HasContact()
+        {
+            return IsElementPresent(By.Name("selected[]"));
         }
 
         public ContactHelper SubmitContactModification()
@@ -54,7 +78,6 @@ namespace WebAddressBookTests
         public ContactHelper SelectContact()
         {
             driver.FindElement(By.Name("selected[]")).Click();
-            //driver.FindElement(By.Id(v.ToString())).Click();
             return this;
         }
 

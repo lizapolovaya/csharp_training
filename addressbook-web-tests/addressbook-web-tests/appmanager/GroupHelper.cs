@@ -29,6 +29,19 @@ namespace WebAddressBookTests
 
         public GroupHelper Modify(int v, GroupData newData)
         {
+            if (HasGroup())
+            {
+                return this;
+            }
+            else 
+            {
+                GroupData group = new GroupData("aaa");
+                group.Header = "bbb";
+                group.Footer = "ccc";
+
+                Create(group);
+            }
+            
             manager.Navigation.GoToGroupsPage();
             SelectGroup(v);
             InitGroupModification();
@@ -39,8 +52,27 @@ namespace WebAddressBookTests
             return this;
         }
 
+        public bool HasGroup()
+        {
+            return IsElementPresent(By.Name("selected[]"));
+        }
+
         public GroupHelper Remove(int v)
         {
+
+            if (HasGroup())
+            {
+                return this;
+            }
+            else
+            {
+                GroupData group = new GroupData("aaa");
+                group.Header = "bbb";
+                group.Footer = "ccc";
+
+                Create(group);
+            }
+
             manager.Navigation.GoToGroupsPage();
             SelectGroup(v);
             RemoveGroup();
