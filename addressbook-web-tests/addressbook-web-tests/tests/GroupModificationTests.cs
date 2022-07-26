@@ -13,6 +13,19 @@ namespace WebAddressBookTests
         [Test]
         public void GroupModificationTest()
         {
+            if (app.Groups.HasGroup())
+            {
+
+            }
+            else
+            {
+                GroupData group = new GroupData("aaa");
+                group.Header = "bbb";
+                group.Footer = "ccc";
+
+                app.Groups.Create(group);
+            }
+
             GroupData newData = new GroupData("rrr");
             newData.Header = null;
             newData.Footer = null;

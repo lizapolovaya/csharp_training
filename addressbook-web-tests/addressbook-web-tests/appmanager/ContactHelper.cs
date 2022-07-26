@@ -17,17 +17,8 @@ namespace WebAddressBookTests
         {
         }
 
-        public ContactHelper Remove(ContactData contact)
-        {
-            if (HasContact())
-            {
-
-            }
-            else
-            { 
-                Create(contact); 
-            }
-
+        public ContactHelper Remove()
+        { 
             SelectContact();
             DeleteContact();
             return this;
@@ -35,15 +26,6 @@ namespace WebAddressBookTests
 
         public ContactHelper Modify(ContactData newContact)
         {
-            if (HasContact())
-            {
- 
-            }
-            else
-            {
-                ContactData contact = new ContactData("liza", "polovaya");
-                Create(contact);
-            }
 
             EditContact();
             FillInContactForm(newContact);

@@ -15,6 +15,16 @@ namespace WebAddressBookTests
         [Test]
         public void GontactModificationTest()
         {
+            if (app.Contacts.HasContact())
+            {
+
+            }
+            else
+            {
+                ContactData contact = new ContactData("liza", "polovaya");
+                app.Contacts.Create(contact);
+            }
+
             ContactData newContact = new ContactData("mona", "lisa");
 
             app.Contacts.Modify(newContact);
